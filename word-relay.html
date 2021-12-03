@@ -5,18 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝말잇기 게임</title>
+    <style>
+
+    </style>
 </head>
 <body>
   <div><span id="order">1</span>번째 참가자</div>
-  <div>제시어 : <span id = "word"></span></div>
+  <div>이전 단어 : <span id = "word"></span></div>
   <input type="text">
   <button>입력</button>
   <script>
-    
+    const ppl = parseInt(prompt("몇 명이 참여하나요?"), 10);
+    const $button = document.querySelector('button');
+    const $input = document.querySelector('input');
+    const $word = document.querySelector('#word');
+    const $order = document.querySelector('#order');
+    let word; //이전 단어
+    let newWord; //새로 입력한 단어
 
+    const onClickButton = () => {
+      if (!word || word[word.length - 1] === newWord[0]) {
+        //비어있는 경우 
+        word = newWord;
+        $word.textContent = word;
+        const order =
+        
+        
+        parseInt($order.textContent);
+        if (order + 1 > ppl) {
+          $order.textContent = 1;
+        } else {
+          $order.textContent = order + 1;
+        }
+      } else {
+       alert("틀렸습니다!");
+      }
+      $input.value = '';
+      $input.focus();
+    };
+    
+    const onInPut = (event) => {
+      newWord = event.target.value; 
+    }
+    $button.addEventListener('click', onClickButton);
+    $input.addEventListener('input', onInPut);
+    
   </script>
 
-</body>
-</body>
 </body>
 </html>
